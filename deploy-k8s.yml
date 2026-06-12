@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Generate deployment file
+      shell: envsubst < deployment.yaml > deployment-new.yaml
+
+    - name: Deploy application
+      shell: kubectl apply -f deployment-new.yaml
+
+    - name: Create service
+      shell: kubectl apply -f service.yaml
+
+    - name: Verify pods
+      shell: kubectl get pods
