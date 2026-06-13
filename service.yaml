@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: capstone-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: capstone-app
   ports:
